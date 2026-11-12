@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://uyntuikrhuuo"]
+
+[ext_resource type="Script" uid="uid://82oi4oadttir" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://ddujv61uwsyiw" path="res://Assets for Godot Workshop/Heart_shadow-Sheet.png" id="2_cvnsp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywrk4"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+resource_name = "Left"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cvnsp"]
+resource_name = "Right"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkybt"]
+_data = {
+&"Left": SubResource("Animation_6t5aa"),
+&"RESET": SubResource("Animation_vgqql"),
+&"Right": SubResource("Animation_cvnsp")
+}
+
+[node name="player" type="CharacterBody2D" unique_id=2039257162]
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2112758229]
+texture = ExtResource("2_cvnsp")
+flip_h = true
+hframes = 4
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=322339774]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_ywrk4")
+
+[node name="Animationmpla" type="AnimationPlayer" parent="." unique_id=751120744]
+libraries/ = SubResource("AnimationLibrary_fkybt")

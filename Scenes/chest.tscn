@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dwa7eaf62foto"]
+
+[ext_resource type="Script" uid="uid://0xifwaenrlvp" path="res://Scripts/chest.gd" id="1_cjfl1"]
+[ext_resource type="Texture2D" uid="uid://dbswb8hg586wt" path="res://Assets for Godot Workshop/BigTreasureChest.png" id="1_lyb87"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywrk4"]
+size = Vector2(12, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khuhe"]
+size = Vector2(32, 20)
+
+[node name="chest" type="StaticBody2D" unique_id=1547287372]
+script = ExtResource("1_cjfl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=979761937]
+texture = ExtResource("1_lyb87")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1193985220]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ywrk4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1064366652]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1931344763]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_khuhe")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

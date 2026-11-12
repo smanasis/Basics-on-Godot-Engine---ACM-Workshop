@@ -1,0 +1,16 @@
+extends StaticBody2D
+
+signal push_player
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+#premade signal on the area2d node
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	emit_signal("push_player") #we emit our own signal
